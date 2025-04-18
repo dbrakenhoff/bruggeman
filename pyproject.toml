@@ -1,0 +1,41 @@
+[project]
+name = "bruggeman"
+description = "Add your description here"
+readme = "README.md"
+authors = [{ name = "Davíd Brakenhoff", email = "d.brakenhoff@artesia-water.nl" }]
+requires-python = ">=3.12"
+dependencies = ["numpy", "scipy", "matplotlib"]
+dynamic = ["version"]
+
+[project.scripts]
+bruggeman = "bruggeman:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "bruggeman/__about__.py"
+
+[project.optional-dependencies]
+ci = ["pytest", "pytest-cov", "nbformat", "nbconvert"]
+docs = [
+    "Ipython",
+    "ipykernel",
+    "pydata-sphinx-theme",
+    "sphinx",
+    "sphinxcontrib-bibtex",
+    "numpydoc",
+    "sphinx-design",
+    "myst_nb",
+]
+
+[tool.ruff]
+extend-include = ["*.ipynb"]
+lint.extend-select = ["I"]
+show-fixes = true
+fix = true
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers --durations=0"
+markers = ["notebooks: run notebooks"]
