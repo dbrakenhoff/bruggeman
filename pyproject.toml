@@ -28,6 +28,7 @@ docs = [
     "numpydoc",
     "sphinx-design",
     "myst_nb",
+    "ttim",
 ]
 
 [tool.ruff]
