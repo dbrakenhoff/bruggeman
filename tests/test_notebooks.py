@@ -37,5 +37,6 @@ def test_notebook_py(pth):
 if __name__ == "__main__":
     for notebook in get_notebooks():
         os.system(
-            f"jupyter nbconvert --clear-output --inplace --ClearMetadataPreprocessor.enabled=True {notebook}"
+            "jupyter nbconvert --clear-output --inplace "
+            f"--ClearMetadataPreprocessor.enabled=True {notebook}"
         )
