@@ -4,14 +4,14 @@ from scipy.special import erfc
 from bruggeman.general import ierfc
 
 
-def bruggeman_123_02(x, t, Δh, k, H, S):
+def bruggeman_123_02(x, t, dh, k, H, S):
     """Solution for sudden rise of the water table in a confined aquifer.
 
     From Bruggeman 123.02
     """
     beta = np.sqrt(S / (k * H))
     u = beta * x / (2 * np.sqrt(t))
-    return Δh * erfc(u)
+    return dh * erfc(u)
 
 
 def bruggeman_123_03(x, t, a, k, H, S):
