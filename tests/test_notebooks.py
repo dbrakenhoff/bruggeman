@@ -11,9 +11,6 @@ nbdirs = [
 ]
 
 
-# testdir = tempfile.mkdtemp()
-
-
 def get_notebooks():
     nblist = []
     for nbdir in nbdirs:
@@ -35,3 +32,10 @@ def test_notebook_py(pth):
             ), f"Got empty notebook for {os.path.basename(pth)}"
         except Exception as e:
             pytest.fail(reason=f"Failed executing {os.path.basename(pth)}: {e}")
+
+
+if __name__ == "__main__":
+    for notebook in get_notebooks():
+        os.system(
+            f"jupyter nbconvert --clear-output --inplace --ClearMetadataPreprocessor.enabled=True {notebook}"
+        )
