@@ -51,3 +51,72 @@ def bruggeman_133_15():
     """
     # implement function (check Pastas)
     pass
+
+def bruggeman_128_01(x, t, h, S, k, D, tau):
+    """Tidal fluctuation open water, confined aquifer with open boundary (x = 0).
+
+    From Bruggeman 128.01
+
+    h = amplitude of tidal fluctuation, [m]
+    k = hydraulic conductivity [m/d]
+    D = aquifer thickness [m]
+    S = storage coefficient [-]
+    tau = tidal period [d]
+    """
+    beta = np.sqrt(S / (k * D))
+    omega = 2 * np.pi / tau
+    omega_accent = beta * np.sqrt(omega / 2)
+
+    return h * np.exp(-omega_accent * x) * np.sin(omega * t - omega_accent * x)
+
+
+def bruggeman_128_03(x, t, h, S, k, D, tau, c):
+    """Tidal fluctuation open water, leaky aquifer with open boundary (x = 0).
+
+    From Bruggeman 128.03
+
+    h = amplitude of tidal fluctuation, [m]
+    k = hydraulic conductivity [m/d]
+    D = aquifer thickness [m]
+    S = storage coefficient [-]
+    tau = tidal period [d]
+    c = leakance [d]
+    """
+    beta = np.sqrt(S / (k * D))
+    eta = 1 / (c * S)
+    omega = 2 * np.pi / tau
+
+    a = np.real(np.sqrt(eta + 1j * omega))
+    b = np.imag(np.sqrt(eta + 1j * omega))
+
+    return h * np.exp(-beta * a * x) * np.sin(omega * t - beta * b * x)
+
+
+def bruggeman_128_04(x, t, h, S, k, D, tau, c, w):
+    """Tidal fluctuation open water, leaky aquifer with entrance resistance (x = 0).
+
+    From Bruggeman 128.04
+
+    h = amplitude of tidal fluctuation, [m]
+    k = hydraulic conductivity [m/d]
+    D = aquifer thickness [m]
+    S = storage coefficient [-]
+    tau = tidal period [d]
+    c = leakance [d]
+    w = entry resistance at x=0 [d]
+    """
+    beta = np.sqrt(S / (k * D))
+    eta = 1 / (c * S)
+    omega = 2 * np.pi / tau
+    theta = 1 / (np.power(beta, 2) * np.power(k, 2) * np.power(w, 2))
+
+    a = np.real(np.sqrt(eta + 1j * omega))
+    b = np.imag(np.sqrt(eta + 1j * omega))
+
+    return (
+        h
+        * np.sqrt(theta)
+        * np.exp(-beta * a * x)
+        * np.sin(omega * t - beta * b * x - np.arctan(b / (a + np.sqrt(theta))))
+        / (np.sqrt(np.power((a + np.sqrt(theta)), 2) + np.power(b, 2)))
+    )
