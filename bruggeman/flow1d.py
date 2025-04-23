@@ -4,34 +4,94 @@ from scipy.special import erfc
 from bruggeman.general import ierfc
 
 
-def bruggeman_123_02(x, t, dh, k, H, S):
+def bruggeman_123_02(x, t, dh, k, D, S):
     """Solution for sudden rise of the water table in a confined aquifer.
 
     From Bruggeman 123.02
+
+    Parameters
+    ----------
+    x : float
+        Distance from the boundary [m]
+    t : float
+        Time since the start of the rise [d]
+    dh : float
+        Rise of the water table [m]
+    k : float
+        Hydraulic conductivity [m/d]
+    D : float
+        Aquifer thickness [m]
+    S : float
+        Storage coefficient [-]
+
+    Returns
+    -------
+    head : float
+        head in the aquifer at distance x and time t [m]
     """
-    beta = np.sqrt(S / (k * H))
+    beta = np.sqrt(S / (k * D))
     u = beta * x / (2 * np.sqrt(t))
     return dh * erfc(u)
 
 
-def bruggeman_123_03(x, t, a, k, H, S):
+def bruggeman_123_03(x, t, a, k, D, S):
     """Solution for linear rise of the water table in a confined aquifer.
 
     From Bruggeman 123.03
+
+    Parameters
+    ----------
+    x : float
+        Distance from the boundary [m]
+    t : float
+        Time since the start of the rise [d]
+    a : float
+        Slope of linear rise of the water table [m/d]
+    k : float
+        Hydraulic conductivity [m/d]
+    D : float
+        Aquifer thickness [m]
+    S : float
+        Storage coefficient [-]
+
+    Returns
+    -------
+    head : float
+        head in the aquifer at distance x and time t [m]
     """
-    beta = np.sqrt(S / (k * H))
+    beta = np.sqrt(S / (k * D))
     u = beta * x / (2 * np.sqrt(t))
     return a * t * ierfc(u, 2) / ierfc(0, 2)
 
 
-def bruggeman_123_05_q(x, t, b, k, H, S):
+def bruggeman_123_05_q(x, t, Q, k, D, S):
     """Solution for constant infiltration/pumping in a confined aquifer.
 
     From Olsthoorn, Th. 2006. Van Edelman naar Bruggeman. Stromingen 12 (2006) p5-11.
+
+    Parameters
+    ----------
+    x : float
+        Distance from the boundary [m]
+    t : float
+        Time since the start of the rise [d]
+    Q : float
+        Infiltration (positive) or pumping (negative) rate [m^3/d]
+    k : float
+        Hydraulic conductivity [m/d]
+    D : float
+        Aquifer thickness [m]
+    S : float
+        Storage coefficient [-]
+
+    Returns
+    -------
+    head : float
+        head in the aquifer at distance x and time t [m]
     """
-    beta = np.sqrt(S / (k * H))
+    beta = np.sqrt(S / (k * D))
     u = beta * x / (2 * np.sqrt(t))
-    s = 2 * b * np.sqrt(t) / np.sqrt(k * H * S) * ierfc(u, 1) / (ierfc(0, 0))
+    s = 2 * Q * np.sqrt(t) / np.sqrt(k * D * S) * ierfc(u, 1) / (ierfc(0, 0))
     return s
 
 
@@ -58,11 +118,27 @@ def bruggeman_128_01(x, t, h, S, k, D, tau):
 
     From Bruggeman 128.01
 
-    h = amplitude of tidal fluctuation, [m]
-    k = hydraulic conductivity [m/d]
-    D = aquifer thickness [m]
-    S = storage coefficient [-]
-    tau = tidal period [d]
+    Parameters
+    ----------
+    x : float
+        Distance from the boundary [m]
+    t : float
+        time [d]
+    h : float
+        amplitude of tidal fluctuation [m]
+    S : float
+        storage coefficient [-]
+    k : float
+        hydraulic conductivity [m/d]
+    D : float
+        aquifer thickness [m]
+    tau : float
+        tidal period [d]
+
+    Returns
+    -------
+    head : float
+        head in the aquifer at distance x and time t [m]
     """
     beta = np.sqrt(S / (k * D))
     omega = 2 * np.pi / tau
@@ -76,12 +152,29 @@ def bruggeman_128_03(x, t, h, S, k, D, tau, c):
 
     From Bruggeman 128.03
 
-    h = amplitude of tidal fluctuation, [m]
-    k = hydraulic conductivity [m/d]
-    D = aquifer thickness [m]
-    S = storage coefficient [-]
-    tau = tidal period [d]
-    c = leakance [d]
+    Parameters
+    ----------
+    x : float
+        Distance from the boundary [m]
+    t : float
+        time [d]
+    h : float
+        amplitude of tidal fluctuation [m]
+    S : float
+        storage coefficient [-]
+    k : float
+        hydraulic conductivity [m/d]
+    D : float
+        aquifer thickness [m]
+    tau : float
+        tidal period [d]
+    c : float
+        leakance [d]
+
+    Returns
+    -------
+    head : float
+        head in the aquifer at distance x and time t [m]
     """
     beta = np.sqrt(S / (k * D))
     eta = 1 / (c * S)
@@ -98,13 +191,31 @@ def bruggeman_128_04(x, t, h, S, k, D, tau, c, w):
 
     From Bruggeman 128.04
 
-    h = amplitude of tidal fluctuation, [m]
-    k = hydraulic conductivity [m/d]
-    D = aquifer thickness [m]
-    S = storage coefficient [-]
-    tau = tidal period [d]
-    c = leakance [d]
-    w = entry resistance at x=0 [d]
+    Parameters
+    ----------
+    x : float
+        Distance from the boundary [m]
+    t : float
+        time [d]
+    h : float
+        amplitude of tidal fluctuation [m]
+    S : float
+        storage coefficient [-]
+    k : float
+        hydraulic conductivity [m/d]
+    D : float
+        aquifer thickness [m]
+    tau : float
+        tidal period [d]
+    c : float
+        leakance [d]
+    w : float
+        entry resistance at x=0 [d]
+
+    Returns
+    -------
+    head : float
+        head in the aquifer at distance x and time t [m]
     """
     beta = np.sqrt(S / (k * D))
     eta = 1 / (c * S)
