@@ -52,6 +52,7 @@ def bruggeman_133_15():
     # implement function (check Pastas)
     pass
 
+
 def bruggeman_128_01(x, t, h, S, k, D, tau):
     """Tidal fluctuation open water, confined aquifer with open boundary (x = 0).
 
