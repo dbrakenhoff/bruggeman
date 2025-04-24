@@ -4,7 +4,12 @@ description = "Add your description here"
 readme = "README.md"
 authors = [{ name = "Davíd Brakenhoff", email = "d.brakenhoff@artesia-water.nl" }]
 requires-python = ">=3.12"
-dependencies = ["numpy", "scipy", "matplotlib"]
+dependencies = [
+    "numpy",
+    "scipy",
+    "matplotlib",
+    "latexify-py@git+https://github.com/google/latexify_py.git#egg=main",
+]
 dynamic = ["version"]
 
 [project.scripts]
@@ -16,6 +21,9 @@ build-backend = "hatchling.build"
 
 [tool.hatch.version]
 path = "bruggeman/__about__.py"
+
+[tool.hatch.metadata]
+allow-direct-references = true
 
 [project.optional-dependencies]
 ci = ["pytest", "pytest-cov", "nbformat", "nbconvert"]
