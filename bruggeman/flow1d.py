@@ -100,7 +100,6 @@ def bruggeman_123_05_q(x, t, Q, k, D, S):
     u = beta * x / (2 * sqrt(t))
     return 2 * Q * sqrt(t) / sqrt(k * D * S) * ierfc(u, 1) / (ierfc(0, 0))
 
-  
 
 def bruggeman_123_32():
     """The Polder function.
