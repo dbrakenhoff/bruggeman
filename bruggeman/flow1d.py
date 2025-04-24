@@ -100,6 +100,7 @@ def bruggeman_123_05_q(x, t, Q, k, D, S):
     u = beta * x / (2 * sqrt(t))
     return 2 * Q * sqrt(t) / sqrt(k * D * S) * ierfc(u, 1) / (ierfc(0, 0))
 
+  
 
 def bruggeman_123_32():
     """The Polder function.
@@ -108,6 +109,36 @@ def bruggeman_123_32():
     """
     # implement function (check Pastas)
     pass
+
+
+@latexify_function(identifiers={"bruggeman_126_33": "varphi"}, reduce_assignments=False)
+def bruggeman_126_33(x, h, k, D, c, w):
+    """Leaky aquifer with entrance resistance. Steady state after head change.
+
+    From Bruggeman 126.33
+
+    Parameters
+    ----------
+    x : float
+        Distance from the boundary [m]
+    h : float
+        Rise of the water table [m]
+    k : float
+        Hydraulic conductivity [m/d]
+    D : float
+        Aquifer thickness [m]
+    c : float
+        Leakance [d]
+    w : float
+        Entry resistance at x=0 [d]
+
+    Returns
+    -------
+    head : float
+        steady state head in the aquifer at distance x [m]
+    """
+    lambda_ = sqrt(k * D * c)
+    return h * lambda_ / (k * w + lambda_) * exp(-x / lambda_)
 
 
 def bruggeman_133_15():
