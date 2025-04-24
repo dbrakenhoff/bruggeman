@@ -20,8 +20,9 @@ Development install:
 
 ## Documentation
 
-The documentation is currently not hosted since the repository is still private.
-To make the documentation locally:
+The documentation is available [here](https://bruggeman.readthedocs.io/en/latest/index.html).
+
+To build the documentation locally:
 
 1. Install the optional documentation dependencies `pip install bruggeman[docs]`
 (or `pip install -e ".[docs]"`).
