@@ -110,7 +110,10 @@ def bruggeman_123_32():
     pass
 
 
-@latexify_function(identifiers={"bruggeman_126_33": "varphi", "lambda_":r"\lambda"}, reduce_assignments=False)
+@latexify_function(
+    identifiers={"bruggeman_126_33": "varphi", "lambda_": r"\lambda"},
+    reduce_assignments=False,
+)
 def bruggeman_126_33(x, h, k, D, c, w):
     """Leaky aquifer with entrance resistance. Steady state after head change.
 
