@@ -20,12 +20,12 @@ Flow1D
 
 `123.05 Constant pumping in a confined aquifer`_
 
-`126.33 Step head change in a semi-confined aquifer (steady state)`_
+`126.33 Step head change in a semi-confined aquifer - steady state`_
 
 `Edelman sudden change in water level in a confined aquifer`_
 
 .. _123.05 Constant pumping in a confined aquifer: bruggeman_123_05.html
-.. _126.33 Step head change in a semi-confined aquifer (steady state): bruggeman_126_33.html
+.. _126.33 Step head change in a semi-confined aquifer - steady state: bruggeman_126_33.html
 .. _Edelman sudden change in water level in a confined aquifer: edelman.html
 
 Other
