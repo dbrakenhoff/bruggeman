@@ -4,12 +4,7 @@ description = "Add your description here"
 readme = "README.md"
 authors = [{ name = "Davíd Brakenhoff", email = "d.brakenhoff@artesia-water.nl" }]
 requires-python = ">=3.12"
-dependencies = [
-    "numpy",
-    "scipy",
-    "matplotlib",
-    "latexify-py@git+https://github.com/google/latexify_py.git#egg=main",
-]
+dependencies = ["numpy", "scipy", "matplotlib"]
 dynamic = ["version"]
 
 [project.scripts]
@@ -26,8 +21,10 @@ path = "bruggeman/__about__.py"
 allow-direct-references = true
 
 [project.optional-dependencies]
+latexify = ["latexify-py@git+https://github.com/google/latexify_py.git#egg=main"]
 ci = ["pytest", "pytest-cov", "nbformat", "nbconvert"]
 docs = [
+    "bruggeman[latexify]",
     "Ipython",
     "ipykernel",
     "pydata-sphinx-theme",
