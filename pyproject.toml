@@ -21,7 +21,13 @@ path = "bruggeman/__about__.py"
 allow-direct-references = true
 
 [project.optional-dependencies]
-latexify = ["latexify-py@git+https://github.com/google/latexify_py.git#egg=main"]
+# NOTE: it is recommended to install the latest version of latexify-py. Unfortunately
+# PyPI won't accept this as a dependency. So we use the official release, but for the 
+# best results use the following in pyproject.toml:
+#  - "latexify-py@git+https://github.com/google/latexify_py.git#egg=main"
+# or install using:
+#  - pip install git+https://github.com/google/latexify_py.git#egg=main
+latexify = ["latexify-py"]
 ci = ["pytest", "pytest-cov", "nbformat", "nbconvert"]
 docs = [
     "bruggeman[latexify]",
