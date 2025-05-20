@@ -2,9 +2,11 @@
 name = "bruggeman"
 description = "Add your description here"
 readme = "README.md"
-authors = [{ name = "Davíd Brakenhoff", email = "d.brakenhoff@artesia-water.nl" }]
+authors = [
+    { name = "Davíd Brakenhoff", email = "d.brakenhoff@artesia-water.nl" },
+]
 requires-python = ">=3.12"
-dependencies = ["numpy", "scipy", "matplotlib"]
+dependencies = ["numpy", "scipy"]
 dynamic = ["version"]
 
 [project.scripts]
@@ -22,13 +24,13 @@ allow-direct-references = true
 
 [project.optional-dependencies]
 # NOTE: it is recommended to install the latest version of latexify-py. Unfortunately
-# PyPI won't accept this as a dependency. So we use the official release, but for the 
+# PyPI won't accept this as a dependency. So we use the official release, but for the
 # best results use the following in pyproject.toml:
 #  - "latexify-py@git+https://github.com/google/latexify_py.git#egg=main"
 # or install using:
 #  - pip install git+https://github.com/google/latexify_py.git#egg=main
 latexify = ["latexify-py"]
-ci = ["pytest", "pytest-cov", "nbformat", "nbconvert"]
+ci = ["pytest", "pytest-cov", "nbformat", "nbconvert", "mypy", "ruff"]
 docs = [
     "bruggeman[latexify]",
     "Ipython",
@@ -51,3 +53,10 @@ fix = true
 [tool.pytest.ini_options]
 addopts = "--strict-markers --durations=0"
 markers = ["notebooks: run notebooks"]
+
+[tool.mypy]
+mypy_path = "src"
+
+[[tool.mypy.overrides]]
+module = ["scipy.special.*", "latexify.*"]
+ignore_missing_imports = true

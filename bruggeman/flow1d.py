@@ -5,7 +5,9 @@ from bruggeman.general import ierfc, latexify_function
 
 
 @latexify_function(identifiers={"bruggeman_123_02": "varphi"}, reduce_assignments=True)
-def bruggeman_123_02(x, t, h, k, D, S):
+def bruggeman_123_02(
+    x: float, t: float, h: float, k: float, D: float, S: float
+) -> float:
     """Solution for sudden rise of the water table in a confined aquifer.
 
     From Bruggeman 123.02
@@ -36,7 +38,9 @@ def bruggeman_123_02(x, t, h, k, D, S):
 
 
 @latexify_function(identifiers={"bruggeman_123_03": "varphi"}, reduce_assignments=True)
-def bruggeman_123_03(x, t, a, k, D, S):
+def bruggeman_123_03(
+    x: float, t: float, a: float, k: float, D: float, S: float
+) -> float:
     """Solution for linear rise of the water table in a confined aquifer.
 
     From Bruggeman 123.03

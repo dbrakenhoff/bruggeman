@@ -1,10 +1,12 @@
+from collections.abc import Callable
+
 from numpy import clip, exp, pi, sqrt
 from scipy.special import erfc
 
 
 def latexify_function(
-    function=None,
-    identifiers=None,
+    function: Callable | None = None,
+    identifiers: dict | None = None,
     use_math_symbols: bool = True,
     use_raw_function_name: bool = False,
     **kwargs,
@@ -53,7 +55,7 @@ def latexify_function(
 
 
 @latexify_function()
-def ierfc(z, n):
+def ierfc(z: float, n: int) -> float:
     """Iterated integral complementary error function."""
     if n == -1:
         return 2 / sqrt(pi) * exp(-z * z)
