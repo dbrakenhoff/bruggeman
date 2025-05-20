@@ -1,6 +1,6 @@
 [project]
 name = "bruggeman"
-description = "Add your description here"
+description = "Repository for the Bruggeman equations from Analytical Solutions of Geohydrological Problems (1999)"
 readme = "README.md"
 authors = [
     { name = "Davíd Brakenhoff", email = "d.brakenhoff@artesia-water.nl" },
