@@ -55,7 +55,7 @@ addopts = "--strict-markers --durations=0"
 markers = ["notebooks: run notebooks"]
 
 [tool.mypy]
-mypy_path = "src"
+mypy_path = "bruggeman"
 
 [[tool.mypy.overrides]]
 module = ["scipy.special.*", "latexify.*"]
