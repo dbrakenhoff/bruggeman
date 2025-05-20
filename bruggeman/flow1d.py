@@ -1,11 +1,19 @@
-from numpy import arctan, exp, imag, pi, real, sin, sqrt
+from numpy import arctan, cos, exp, float64, imag, pi, real, sin, sqrt
+from numpy.typing import NDArray
 from scipy.special import erfc
 
 from bruggeman.general import ierfc, latexify_function
 
 
 @latexify_function(identifiers={"bruggeman_123_02": "varphi"}, reduce_assignments=True)
-def bruggeman_123_02(x, t, h, k, D, S):
+def bruggeman_123_02(
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
+    h: float,
+    k: float,
+    D: float,
+    S: float,
+) -> float | NDArray[float64]:
     """Solution for sudden rise of the water table in a confined aquifer.
 
     From Bruggeman 123.02
@@ -36,7 +44,14 @@ def bruggeman_123_02(x, t, h, k, D, S):
 
 
 @latexify_function(identifiers={"bruggeman_123_03": "varphi"}, reduce_assignments=True)
-def bruggeman_123_03(x, t, a, k, D, S):
+def bruggeman_123_03(
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
+    a: float,
+    k: float,
+    D: float,
+    S: float,
+) -> float | NDArray[float64]:
     """Solution for linear rise of the water table in a confined aquifer.
 
     From Bruggeman 123.03
@@ -69,7 +84,14 @@ def bruggeman_123_03(x, t, a, k, D, S):
 @latexify_function(
     identifiers={"bruggeman_123_05_q": "varphi"}, reduce_assignments=False
 )
-def bruggeman_123_05_q(x, t, Q, k, D, S):
+def bruggeman_123_05_q(
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
+    Q: float,
+    k: float,
+    D: float,
+    S: float,
+) -> float | NDArray[float64]:
     """Solution for constant infiltration/pumping in a confined aquifer.
 
     Probably equivalent to Bruggeman 124.03?
@@ -117,7 +139,14 @@ def bruggeman_123_32():
     },
     reduce_assignments=False,
 )
-def bruggeman_126_33(x, h, k, D, c, w):
+def bruggeman_126_33(
+    x: float | NDArray[float64],
+    h: float,
+    k: float,
+    D: float,
+    c: float,
+    w: float,
+) -> float | NDArray[float64]:
     """Leaky aquifer with entrance resistance. Steady state after head change.
 
     From Bruggeman 126.33
@@ -146,21 +175,20 @@ def bruggeman_126_33(x, h, k, D, c, w):
     return h * lambda_ / (k * w + lambda_) * exp(-x / lambda_)
 
 
-def bruggeman_133_15():
-    """The response function of :cite:t:`van_de_leur_study_1958`.
-
-    From Bruggeman 133.15
-    """
-    # implement function (check Pastas)
-    pass
-
-
 @latexify_function(
     identifiers={"bruggeman_128_01": "varphi"},
     reduce_assignments=False,
     escape_underscores=False,
 )
-def bruggeman_128_01(x, t, h, S, k, D, tau):
+def bruggeman_128_01(
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
+    h: float,
+    S: float,
+    k: float,
+    D: float,
+    tau: float,
+) -> float | NDArray[float64]:
     """Tidal fluctuation open water, confined aquifer with open boundary (x = 0).
 
     From Bruggeman 128.01
@@ -197,7 +225,16 @@ def bruggeman_128_01(x, t, h, S, k, D, tau):
     identifiers={"bruggeman_128_03": "varphi", "j": "i", "real": "Re", "imag": "Im"},
     reduce_assignments=False,
 )
-def bruggeman_128_03(x, t, h, S, k, D, tau, c):
+def bruggeman_128_03(
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
+    h: float,
+    S: float,
+    k: float,
+    D: float,
+    tau: float,
+    c: float,
+) -> float | NDArray[float64]:
     """Tidal fluctuation open water, leaky aquifer with open boundary (x = 0).
 
     From Bruggeman 128.03
@@ -247,7 +284,17 @@ def bruggeman_128_03(x, t, h, S, k, D, tau, c):
     },
     reduce_assignments=False,
 )
-def bruggeman_128_04(x, t, h, S, k, D, tau, c, w):
+def bruggeman_128_04(
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
+    h: float,
+    S: float,
+    k: float,
+    D: float,
+    tau: float,
+    c: float,
+    w: float,
+) -> float | NDArray[float64]:
     """Tidal fluctuation open water, leaky aquifer with entrance resistance (x = 0).
 
     From Bruggeman 128.04
@@ -293,4 +340,59 @@ def bruggeman_128_04(x, t, h, S, k, D, tau, c, w):
         * exp(-beta * a * x)
         * sin(omega * t - beta * b * x - arctan(b / (a + sqrt(theta))))
         / (sqrt((a + sqrt(theta)) ** 2 + b**2))
+    )
+
+
+@latexify_function(
+    identifiers={"bruggeman_133_16": "varphi"},
+    reduce_assignments=False,
+)
+def bruggeman_133_16(
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
+    L: float,
+    S: float,
+    k: float,
+    D: float,
+    p: float = 1.0,
+    N: int = 10,
+) -> float | NDArray[float64]:
+    """Confined aquifer with zero head at x=b(=L/2), zero flux at x=0
+    and a constant arbitrary precipitation p.
+
+    From Bruggeman 133.16
+
+    Parameters
+    ----------
+    x : float
+        Distance from the boundary [m]
+    t : float
+        Time [d]
+    L : float
+        Length of the aquifer [m]
+    S : float
+        Storage coefficient [-]
+    k : float
+        Hydraulic conductivity [m/d]
+    D : float
+        Aquifer thickness [m]
+    p : float
+        Arbitrary constant precipitation [m/d]
+    N : int
+        Number of terms in the series expansion to approximate the infinite sum,
+        by default 10 [-]
+
+    Returns
+    -------
+    head : float
+        Head in the aquifer at distance x and time t [m]
+    """
+    beta = sqrt(S / (k * D))
+    b = L / 2
+    return p / (2 * k * D) * (b**2 - x**2) - 16 * p * b**2 / (pi**3 * k * D) * sum(
+        (-1) ** n
+        / (2 * n + 1) ** 3
+        * cos((2 * n + 1) * pi * x / (2 * b))
+        * exp(-(((2 * n + 1) * pi / (2 * beta * b)) ** 2) * t)
+        for n in range(N)
     )
