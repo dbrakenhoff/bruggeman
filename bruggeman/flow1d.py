@@ -1,4 +1,5 @@
-from numpy import arctan, cos, exp, imag, pi, real, sin, sqrt
+from numpy import arctan, cos, exp, float64, imag, pi, real, sin, sqrt
+from numpy.typing import NDArray
 from scipy.special import erfc
 
 from bruggeman.general import ierfc, latexify_function
@@ -6,13 +7,13 @@ from bruggeman.general import ierfc, latexify_function
 
 @latexify_function(identifiers={"bruggeman_123_02": "varphi"}, reduce_assignments=True)
 def bruggeman_123_02(
-    x: float,
-    t: float,
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
     h: float,
     k: float,
     D: float,
     S: float,
-) -> float:
+) -> float | NDArray[float64]:
     """Solution for sudden rise of the water table in a confined aquifer.
 
     From Bruggeman 123.02
@@ -44,13 +45,13 @@ def bruggeman_123_02(
 
 @latexify_function(identifiers={"bruggeman_123_03": "varphi"}, reduce_assignments=True)
 def bruggeman_123_03(
-    x: float,
-    t: float,
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
     a: float,
     k: float,
     D: float,
     S: float,
-) -> float:
+) -> float | NDArray[float64]:
     """Solution for linear rise of the water table in a confined aquifer.
 
     From Bruggeman 123.03
@@ -84,13 +85,13 @@ def bruggeman_123_03(
     identifiers={"bruggeman_123_05_q": "varphi"}, reduce_assignments=False
 )
 def bruggeman_123_05_q(
-    x: float,
-    t: float,
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
     Q: float,
     k: float,
     D: float,
     S: float,
-) -> float:
+) -> float | NDArray[float64]:
     """Solution for constant infiltration/pumping in a confined aquifer.
 
     Probably equivalent to Bruggeman 124.03?
@@ -138,13 +139,13 @@ def bruggeman_123_32():
     reduce_assignments=False,
 )
 def bruggeman_126_33(
-    x: float,
+    x: float | NDArray[float64],
     h: float,
     k: float,
     D: float,
     c: float,
     w: float,
-) -> float:
+) -> float | NDArray[float64]:
     """Leaky aquifer with entrance resistance. Steady state after head change.
 
     From Bruggeman 126.33
@@ -179,14 +180,14 @@ def bruggeman_126_33(
     escape_underscores=False,
 )
 def bruggeman_128_01(
-    x: float,
-    t: float,
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
     h: float,
     S: float,
     k: float,
     D: float,
     tau: float,
-) -> float:
+) -> float | NDArray[float64]:
     """Tidal fluctuation open water, confined aquifer with open boundary (x = 0).
 
     From Bruggeman 128.01
@@ -224,15 +225,15 @@ def bruggeman_128_01(
     reduce_assignments=False,
 )
 def bruggeman_128_03(
-    x: float,
-    t: float,
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
     h: float,
     S: float,
     k: float,
     D: float,
     tau: float,
     c: float,
-) -> float:
+) -> float | NDArray[float64]:
     """Tidal fluctuation open water, leaky aquifer with open boundary (x = 0).
 
     From Bruggeman 128.03
@@ -283,8 +284,8 @@ def bruggeman_128_03(
     reduce_assignments=False,
 )
 def bruggeman_128_04(
-    x: float,
-    t: float,
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
     h: float,
     S: float,
     k: float,
@@ -292,7 +293,7 @@ def bruggeman_128_04(
     tau: float,
     c: float,
     w: float,
-) -> float:
+) -> float | NDArray[float64]:
     """Tidal fluctuation open water, leaky aquifer with entrance resistance (x = 0).
 
     From Bruggeman 128.04
@@ -346,15 +347,15 @@ def bruggeman_128_04(
     reduce_assignments=False,
 )
 def bruggeman_133_16(
-    x: float,
-    t: float,
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
     L: float,
     S: float,
     k: float,
     D: float,
     p: float = 1.0,
-    n: int = 10,
-) -> float:
+    N: int = 10,
+) -> float | NDArray[float64]:
     """Confined aquifer with zero head at x=b(=L/2), zero flux at x=0
     and a constant arbitrary precipitation p.
 
@@ -376,8 +377,9 @@ def bruggeman_133_16(
         Aquifer thickness [m]
     p : float
         Arbitrary constant precipitation [m/d]
-    n : int
-        Number of terms in the series expansion, by default 10 [-]
+    N : int
+        Number of terms in the series expansion to approximate the infinite sum,
+        by default 10 [-]
 
     Returns
     -------
@@ -387,9 +389,9 @@ def bruggeman_133_16(
     beta = sqrt(S / (k * D))
     b = L / 2
     return p / (2 * k * D) * (b**2 - x**2) - 16 * p * b**2 / (pi**3 * k * D) * sum(
-        (-1) ** ni
-        / (2 * ni + 1) ** 3
-        * cos((2 * ni + 1) * pi * x / (2 * b))
-        * exp(-(((2 * ni + 1) * pi / (2 * beta * b)) ** 2) * t)
-        for ni in range(n)
+        (-1) ** n
+        / (2 * n + 1) ** 3
+        * cos((2 * n + 1) * pi * x / (2 * b))
+        * exp(-(((2 * n + 1) * pi / (2 * beta * b)) ** 2) * t)
+        for n in range(N)
     )

@@ -2,9 +2,7 @@
 name = "bruggeman"
 description = "Repository for the Bruggeman equations from Analytical Solutions of Geohydrological Problems (1999)"
 readme = "README.md"
-authors = [
-    { name = "Davíd Brakenhoff", email = "d.brakenhoff@artesia-water.nl" },
-]
+authors = [{ name = "Davíd Brakenhoff", email = "d.brakenhoff@artesia-water.nl" }]
 requires-python = ">=3.12"
 dependencies = ["numpy", "scipy"]
 dynamic = ["version"]
