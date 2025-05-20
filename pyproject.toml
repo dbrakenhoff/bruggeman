@@ -32,6 +32,7 @@ allow-direct-references = true
 latexify = ["latexify-py"]
 ci = ["pytest", "pytest-cov", "nbformat", "nbconvert", "mypy", "ruff"]
 docs = [
+    "matplotlib",
     "bruggeman[latexify]",
     "Ipython",
     "ipykernel",
