@@ -6,7 +6,12 @@ from bruggeman.general import ierfc, latexify_function
 
 @latexify_function(identifiers={"bruggeman_123_02": "varphi"}, reduce_assignments=True)
 def bruggeman_123_02(
-    x: float, t: float, h: float, k: float, D: float, S: float
+    x: float,
+    t: float,
+    h: float,
+    k: float,
+    D: float,
+    S: float,
 ) -> float:
     """Solution for sudden rise of the water table in a confined aquifer.
 
@@ -39,7 +44,12 @@ def bruggeman_123_02(
 
 @latexify_function(identifiers={"bruggeman_123_03": "varphi"}, reduce_assignments=True)
 def bruggeman_123_03(
-    x: float, t: float, a: float, k: float, D: float, S: float
+    x: float,
+    t: float,
+    a: float,
+    k: float,
+    D: float,
+    S: float,
 ) -> float:
     """Solution for linear rise of the water table in a confined aquifer.
 
@@ -73,7 +83,14 @@ def bruggeman_123_03(
 @latexify_function(
     identifiers={"bruggeman_123_05_q": "varphi"}, reduce_assignments=False
 )
-def bruggeman_123_05_q(x, t, Q, k, D, S):
+def bruggeman_123_05_q(
+    x: float,
+    t: float,
+    Q: float,
+    k: float,
+    D: float,
+    S: float,
+) -> float:
     """Solution for constant infiltration/pumping in a confined aquifer.
 
     Probably equivalent to Bruggeman 124.03?
@@ -120,7 +137,14 @@ def bruggeman_123_32():
     },  # "lambda_": "r\lambda"},         # 'r\lambda' causes problems in Jupyter notebooks
     reduce_assignments=False,
 )
-def bruggeman_126_33(x, h, k, D, c, w):
+def bruggeman_126_33(
+    x: float,
+    h: float,
+    k: float,
+    D: float,
+    c: float,
+    w: float,
+) -> float:
     """Leaky aquifer with entrance resistance. Steady state after head change.
 
     From Bruggeman 126.33
@@ -163,7 +187,15 @@ def bruggeman_133_15():
     reduce_assignments=False,
     escape_underscores=False,
 )
-def bruggeman_128_01(x, t, h, S, k, D, tau):
+def bruggeman_128_01(
+    x: float,
+    t: float,
+    h: float,
+    S: float,
+    k: float,
+    D: float,
+    tau: float,
+) -> float:
     """Tidal fluctuation open water, confined aquifer with open boundary (x = 0).
 
     From Bruggeman 128.01
@@ -200,7 +232,16 @@ def bruggeman_128_01(x, t, h, S, k, D, tau):
     identifiers={"bruggeman_128_03": "varphi", "j": "i", "real": "Re", "imag": "Im"},
     reduce_assignments=False,
 )
-def bruggeman_128_03(x, t, h, S, k, D, tau, c):
+def bruggeman_128_03(
+    x: float,
+    t: float,
+    h: float,
+    S: float,
+    k: float,
+    D: float,
+    tau: float,
+    c: float,
+) -> float:
     """Tidal fluctuation open water, leaky aquifer with open boundary (x = 0).
 
     From Bruggeman 128.03
@@ -250,7 +291,17 @@ def bruggeman_128_03(x, t, h, S, k, D, tau, c):
     },
     reduce_assignments=False,
 )
-def bruggeman_128_04(x, t, h, S, k, D, tau, c, w):
+def bruggeman_128_04(
+    x: float,
+    t: float,
+    h: float,
+    S: float,
+    k: float,
+    D: float,
+    tau: float,
+    c: float,
+    w: float,
+) -> float:
     """Tidal fluctuation open water, leaky aquifer with entrance resistance (x = 0).
 
     From Bruggeman 128.04
