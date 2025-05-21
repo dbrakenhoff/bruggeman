@@ -20,9 +20,9 @@ def bruggeman_123_02(
 
     Parameters
     ----------
-    x : float
+    x : float or ndarray
         Distance from the boundary [m]
-    t : float
+    t : float or ndarray
         Time since the start of the rise [d]
     h : float
         Rise of the water table [m]
@@ -58,9 +58,9 @@ def bruggeman_123_03(
 
     Parameters
     ----------
-    x : float
+    x : float or ndarray
         Distance from the boundary [m]
-    t : float
+    t : float or ndarray
         Time since the start of the rise [d]
     a : float
         Slope of linear rise of the water table [m/d]
@@ -100,9 +100,9 @@ def bruggeman_123_05_q(
 
     Parameters
     ----------
-    x : float
+    x : float or ndarray
         Distance from the boundary [m]
-    t : float
+    t : float or ndarray
         Time since the start of the rise [d]
     Q : float
         Infiltration (positive) or pumping (negative) rate [m^3/d]
@@ -153,9 +153,9 @@ def bruggeman_126_33(
 
     Parameters
     ----------
-    x : float
+    x : float or ndarray
         Distance from the boundary [m]
-    h : float
+    h : float or ndarray
         Rise of the water table [m]
     k : float
         Hydraulic conductivity [m/d]
@@ -195,9 +195,9 @@ def bruggeman_128_01(
 
     Parameters
     ----------
-    x : float
+    x : float or ndarray
         Distance from the boundary [m]
-    t : float
+    t : float or ndarray
         time [d]
     h : float
         amplitude of tidal fluctuation [m]
@@ -241,9 +241,9 @@ def bruggeman_128_03(
 
     Parameters
     ----------
-    x : float
+    x : float or ndarray
         Distance from the boundary [m]
-    t : float
+    t : float or ndarray
         time [d]
     h : float
         amplitude of tidal fluctuation [m]
@@ -301,9 +301,9 @@ def bruggeman_128_04(
 
     Parameters
     ----------
-    x : float
+    x : float or ndarray
         Distance from the boundary [m]
-    t : float
+    t : float or ndarray
         time [d]
     h : float
         amplitude of tidal fluctuation [m]
@@ -364,9 +364,9 @@ def bruggeman_133_16(
 
     Parameters
     ----------
-    x : float
+    x : float or ndarray
         Distance from the boundary [m]
-    t : float
+    t : float or ndarray
         Time [d]
     L : float
         Length of the aquifer [m]
