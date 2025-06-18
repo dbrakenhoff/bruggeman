@@ -14,6 +14,7 @@ def bruggeman_21_11(
     p: float = 1.0,
 ) -> float | NDArray[float64]:
     """Confined phreatic aquifer with horizontal 1D-flow.
+
     Flow caused by precipitation through an infinite strip of
     width 2b, bounded at both sides by open water with equal level
 
