@@ -5,6 +5,42 @@ from scipy.special import erfc
 from bruggeman.general import ierfc, latexify_function
 
 
+@latexify_function(identifiers={"bruggeman_21_11": "h"}, reduce_assignments=True)
+def bruggeman_21_11(
+    x: float | NDArray[float64],
+    b: float,
+    k: float,
+    H: float,
+    p: float = 1.0,
+) -> float | NDArray[float64]:
+    """Confined phreatic aquifer with horizontal 1D-flow.
+    Flow caused by precipitation through an infinite strip of
+    width 2b, bounded at both sides by open water with equal level
+
+    From Bruggeman 21.11
+
+    Parameters
+    ----------
+    x : float or ndarray
+        Distance from the center of the strip [m]
+    b : float
+        Half-width of the strip [m]
+    k : float
+        Hydraulic conductivity [m/d]
+    H : float
+        Head in the open water [m]
+    p : float
+        Arbitrary constant precipitation [m/d]
+
+    Returns
+    -------
+    head: float
+        Hydraulic head at distance x [m]
+    """
+
+    return sqrt(H**2 + p / k * (b**2 - x**2))
+
+
 @latexify_function(identifiers={"bruggeman_123_02": "varphi"}, reduce_assignments=True)
 def bruggeman_123_02(
     x: float | NDArray[float64],
