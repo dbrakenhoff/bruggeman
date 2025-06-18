@@ -9,6 +9,7 @@ Below you can find examples.
     :hidden:
     :glob:
 
+    bruggeman_21_11
     bruggeman_123_05
     bruggeman_126_33
     bruggeman_128_0x
@@ -20,6 +21,8 @@ Below you can find examples.
 Flow1D
 ------
 
+`21.11 Confined phreatic aquifer with precipitation`_
+
 `123.05 Constant pumping in a confined aquifer`_
 
 `126.33 Step head change in a semi-confined aquifer - steady state`_
@@ -30,6 +33,7 @@ Flow1D
 
 `Edelman sudden change in water level in a confined aquifer`_
 
+.. _21.11 Confined phreatic aquifer with precipitation: bruggeman_21_11.html
 .. _123.05 Constant pumping in a confined aquifer: bruggeman_123_05.html
 .. _126.33 Step head change in a semi-confined aquifer - steady state: bruggeman_126_33.html
 .. _128.0x Tidal fluctuation of open water: bruggeman_128_0x.html
