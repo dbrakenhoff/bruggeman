@@ -387,14 +387,14 @@ def bruggeman_128_04(
 def bruggeman_133_16(
     x: float | NDArray[float64],
     t: float | NDArray[float64],
-    L: float,
+    b: float,
     S: float,
     k: float,
     D: float,
     p: float = 1.0,
     N: int = 10,
 ) -> float | NDArray[float64]:
-    """Confined aquifer with zero head at x=b(=L/2), zero flux at x=0
+    """Confined aquifer with zero head at x=b, zero flux at x=0
     and a constant arbitrary precipitation p.
 
     From Bruggeman 133.16
@@ -405,8 +405,8 @@ def bruggeman_133_16(
         Distance from the boundary [m]
     t : float or ndarray
         Time [d]
-    L : float
-        Length of the aquifer [m]
+    b : float
+        Half width of the aquifer [m]
     S : float
         Storage coefficient [-]
     k : float
@@ -425,7 +425,7 @@ def bruggeman_133_16(
         Head in the aquifer at distance x and time t [m]
     """
     beta = sqrt(S / (k * D))
-    b = L / 2
+
     return p / (2 * k * D) * (b**2 - x**2) - 16 * p * b**2 / (pi**3 * k * D) * sum(
         (-1) ** n
         / (2 * n + 1) ** 3
@@ -433,3 +433,41 @@ def bruggeman_133_16(
         * exp(-(((2 * n + 1) * pi / (2 * beta * b)) ** 2) * t)
         for n in range(N)
     )
+
+
+@latexify_function(
+    identifiers={"bruggeman_133_17": "varphi"},
+    reduce_assignments=False,
+)
+def bruggeman_133_17(
+    x: float | NDArray[float64],
+    b: float,
+    k: float,
+    D: float,
+    p: float = 1.0,
+) -> float | NDArray[float64]:
+    """Confined aquifer with zero head at x=b, zero flux at x=0
+    and a constant arbitrary precipitation p. Steady state.
+
+    From Bruggeman 133.17
+
+    Parameters
+    ----------
+    x : float or ndarray
+        Distance from the boundary [m]
+    b : float
+        Half width of the aquifer [m]
+    k : float
+        Hydraulic conductivity [m/d]
+    D : float
+        Aquifer thickness [m]
+    p : float
+        Arbitrary constant precipitation [m/d]
+
+    Returns
+    -------
+    head : float
+        Head in the aquifer at distance x [m]
+    """
+
+    return p / (2 * k * D) * (b**2 - x**2)
