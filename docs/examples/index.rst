@@ -15,6 +15,7 @@ Below you can find examples.
     bruggeman_128_0x
     bruggeman_133_16
     edelman
+    bruggeman_355_19
     check_ierfc
 
 
@@ -39,6 +40,13 @@ Flow1D
 .. _128.0x Tidal fluctuation of open water: bruggeman_128_0x.html
 .. _133.1x Confined flow with precipitation: bruggeman_133_1x.html
 .. _Edelman sudden change in water level in a confined aquifer: edelman.html
+
+Flow2D
+------
+
+`355.19 Drainage canal on top of confined aquifer`_
+
+.. _355.19 Drainage canal on top of confined aquifer: bruggeman_355_19.html
 
 Other
 -----
