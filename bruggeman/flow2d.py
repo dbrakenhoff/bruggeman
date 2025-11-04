@@ -40,8 +40,7 @@ def bruggeman_355_19(
     zeta = x + z * 1j
     w = np.tanh(np.pi * zeta / (2 * D)) / np.tanh(np.pi * (L - B) / (2 * D))
     m = (np.tanh(np.pi * (L - B) / (2 * D)) / np.tanh(np.pi * (L + B) / (2 * D))) ** 2
-    omega = k * h / ellipk(m) * ellipf(np.arcsin(w), m)
-    return omega
+    return k * h / ellipk(m) * ellipf(np.arcsin(w), m)
 
 
 @latexify_function(
