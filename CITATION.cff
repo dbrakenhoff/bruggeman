@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Analytical Solutions of Geohydrological Problems"
+authors:
+  - family-names: Bruggeman
+    given-names: G. A.
+date-released: 2025-11-03
+url: "https://github.com/dbrakenhoff/bruggeman"
+preferred-citation:
+  type: book
+  title: "Analytical Solutions of Geohydrological Problems"
+  authors:
+    - family-names: Bruggeman
+      given-names: G. A.
+  year: 1999
+  publisher: "Elsevier"
+  isbn: "978-0-444-81829-4"
