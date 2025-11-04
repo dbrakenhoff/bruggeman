@@ -57,5 +57,5 @@ markers = ["notebooks: run notebooks"]
 mypy_path = "bruggeman"
 
 [[tool.mypy.overrides]]
-module = ["scipy.special.*", "latexify.*"]
+module = ["scipy.special.*", "latexify.*", "mpmath.*"]
 ignore_missing_imports = true
