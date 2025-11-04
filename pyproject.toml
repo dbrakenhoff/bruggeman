@@ -4,7 +4,7 @@ description = "Repository for the Bruggeman equations from Analytical Solutions 
 readme = "README.md"
 authors = [{ name = "Davíd Brakenhoff", email = "d.brakenhoff@artesia-water.nl" }]
 requires-python = ">=3.12"
-dependencies = ["numpy", "scipy"]
+dependencies = ["numpy", "scipy", "mpmath"]
 dynamic = ["version"]
 
 [project.scripts]
@@ -42,6 +42,7 @@ docs = [
     "myst_nb",
     "ttim",
 ]
+dev = ["bruggeman[ci,docs]"]
 
 [tool.ruff]
 extend-include = ["*.ipynb"]
