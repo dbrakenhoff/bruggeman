@@ -43,6 +43,7 @@ Any contributions are welcome! For the best results please follow the guidelines
 - Add the notebook under the appropriate section in `docs/examples/index.rst`. Follow
   the examples in the file to add your notebook. Don't forget to add your notebook to the
   table of contents as well.
-- Consider decorating your function with latexify by importing
+- Consider decorating your function with `@latexify_function` by importing
   `from bruggeman.general import latexify_function`. Follow the examples already present
-  in the python files. This will allow you to render your formulas with LateX in a notebook.
+  in the python files. This uses `sympy` (install with `pip install bruggeman[sympy]`) to
+  render your formula as LaTeX in a notebook.
