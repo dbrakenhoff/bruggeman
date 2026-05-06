@@ -263,7 +263,9 @@ def latexify_function(
             if reduce_assignments:
                 f._repr_latex_ = lambda: f"$\\displaystyle {latex}$"
             else:
-                f._repr_latex_ = lambda: f"$$\n{latex}\n$$"
+                # align* is already a display math environment; no $$ wrapper
+                # needed. Wrapping causes erroneous nesting in Sphinx/MyST-NB.
+                f._repr_latex_ = lambda: latex
         return f
 
     if function:
