@@ -172,7 +172,7 @@ def bruggeman_123_32():
 @latexify_function(
     identifiers={
         "bruggeman_126_33": "varphi",
-        # "lambda_": "lambda",  # 'r\lambda' causes problems in Jupyter notebooks
+        "lambda_": "lambda",
     },
     reduce_assignments=False,
 )
