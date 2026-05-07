@@ -207,10 +207,13 @@ def to_latex(
 
         if not equations:
             return None
-        lines = [r"\begin{align*}"]
+        # Use `aligned` (sub-environment) not `align*` (standalone display env).
+        # `align*` nested inside any outer math delimiter causes MathJax to
+        # raise "Erroneous nesting of equation structures".
+        lines = [r"\begin{aligned}"]
         for eq in equations:
             lines.append("  " + sp.latex(eq).replace(" = ", r" &= ", 1) + r" \\")
-        lines.append(r"\end{align*}")
+        lines.append(r"\end{aligned}")
         return "\n".join(lines)
 
     # reduce_assignments=True: run the function with symbol arguments
@@ -263,9 +266,8 @@ def latexify_function(
             if reduce_assignments:
                 f._repr_latex_ = lambda: f"$\\displaystyle {latex}$"
             else:
-                # align* is already a display math environment; no $$ wrapper
-                # needed. Wrapping causes erroneous nesting in Sphinx/MyST-NB.
-                f._repr_latex_ = lambda: latex
+                # `aligned` is a sub-environment that must live inside $$...$$.
+                f._repr_latex_ = lambda: f"$$\n{latex}\n$$"
         return f
 
     if function:
