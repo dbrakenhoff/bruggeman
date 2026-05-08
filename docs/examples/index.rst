@@ -13,7 +13,7 @@ Below you can find examples.
     bruggeman_123_05
     bruggeman_126_33
     bruggeman_128_0x
-    bruggeman_133_16
+    bruggeman_133_1x
     edelman
     bruggeman_355_19
     check_ierfc
