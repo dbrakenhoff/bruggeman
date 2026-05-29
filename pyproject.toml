@@ -21,17 +21,11 @@ path = "bruggeman/__about__.py"
 allow-direct-references = true
 
 [project.optional-dependencies]
-# NOTE: it is recommended to install the latest version of latexify-py. Unfortunately
-# PyPI won't accept this as a dependency. So we use the official release, but for the
-# best results use the following in pyproject.toml:
-#  - "latexify-py@git+https://github.com/google/latexify_py.git#egg=main"
-# or install using:
-#  - pip install git+https://github.com/google/latexify_py.git#egg=main
-latexify = ["latexify-py"]
+sympy = ["sympy"]
 ci = ["pytest", "pytest-cov", "nbformat", "nbconvert", "mypy", "ruff"]
 docs = [
     "matplotlib",
-    "bruggeman[latexify]",
+    "bruggeman[sympy]",
     "Ipython",
     "ipykernel",
     "pydata-sphinx-theme",
@@ -40,7 +34,7 @@ docs = [
     "numpydoc",
     "sphinx-design",
     "myst_nb",
-    "ttim",
+    "timflow",
 ]
 dev = ["bruggeman[ci,docs]"]
 
@@ -58,5 +52,5 @@ markers = ["notebooks: run notebooks"]
 mypy_path = "bruggeman"
 
 [[tool.mypy.overrides]]
-module = ["scipy.special.*", "latexify.*", "mpmath.*"]
+module = ["scipy.special.*", "sympy.*", "mpmath.*"]
 ignore_missing_imports = true
