@@ -12,6 +12,8 @@ from bruggeman.general import latexify_function
         "i1": "I_1",
         "k0": "K_0",
         "k1": "K_1",
+        "head": "varphi",
+        "denominator": "Delta"
     },
     reduce_assignments=False,
 )
