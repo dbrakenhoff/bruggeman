@@ -16,6 +16,7 @@ Below you can find examples.
     bruggeman_133_1x
     edelman
     bruggeman_355_19
+    bruggeman_244_02
     check_ierfc
 
 
@@ -46,7 +47,10 @@ Flow2D
 
 `355.19 Drainage canal on top of confined aquifer`_
 
+`244.02 Circular basin with radial flow`_
+
 .. _355.19 Drainage canal on top of confined aquifer: bruggeman_355_19.html
+.. _244.02 Circular basin with radial flow: bruggeman_244_02.html
 
 Other
 -----
