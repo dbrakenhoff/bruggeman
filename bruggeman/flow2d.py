@@ -13,7 +13,7 @@ from bruggeman.general import W, latexify_function
         "k0": "K_0",
         "k1": "K_1",
         "head": "varphi",
-        "denominator": "Delta"
+        "denominator": "Delta",
     },
     reduce_assignments=False,
 )
@@ -61,10 +61,9 @@ def bruggeman_244_02(
     lambda_1 = np.sqrt(k * D * c1)
     lambda_2 = np.sqrt(k * D * c2)
 
-    denominator = (
-        lambda_1 * i0(R / lambda_1) * k1(R / lambda_2)
-        + lambda_2 * i1(R / lambda_1) * k0(R / lambda_2)
-    )
+    denominator = lambda_1 * i0(R / lambda_1) * k1(R / lambda_2) + lambda_2 * i1(
+        R / lambda_1
+    ) * k0(R / lambda_2)
     phi_1 = h - h * lambda_1 * k1(R / lambda_2) * i0(r_arr / lambda_1) / denominator
     phi_2 = h * lambda_2 * i1(R / lambda_1) * k0(r_arr / lambda_2) / denominator
 
