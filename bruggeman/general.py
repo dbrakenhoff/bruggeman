@@ -4,7 +4,7 @@ import textwrap
 from collections.abc import Callable
 
 import numpy as np
-from numpy import clip, exp, pi, sqrt, float64
+from numpy import clip, exp, float64, pi, sqrt
 from numpy.typing import NDArray
 from scipy.integrate import quad
 from scipy.special import erfc
@@ -291,12 +291,13 @@ def ierfc(z: float, n: int) -> float:
             a_max=None,
         )
 
+
 def P(
     x: float | NDArray[float64],
     y: float | NDArray[float64],
 ) -> float | NDArray[float64]:
     """Bruggeman's Polder function for 1D flow in a semi-infinite aquifer."""
-    return 1/2 * exp(2 * x) * erfc(x / y + y) + 1/2 * exp(-2 * x) * erfc(x / y - y)
+    return 1 / 2 * exp(2 * x) * erfc(x / y + y) + 1 / 2 * exp(-2 * x) * erfc(x / y - y)
 
 
 def W(
@@ -316,7 +317,7 @@ def W(
         if tau_val == 0:
             return 0.0
         result, _ = quad(
-            lambda x: np.exp(-x - rho_val ** 2 / (4 * x)) / x,
+            lambda x: np.exp(-x - rho_val**2 / (4 * x)) / x,
             0.0,
             float(tau_val),
             limit=100,

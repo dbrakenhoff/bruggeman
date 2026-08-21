@@ -1,5 +1,4 @@
-import numpy as np
-from numpy import pi, sqrt, float64
+from numpy import float64, pi, sqrt
 from numpy.typing import NDArray
 from scipy.special import k0
 
@@ -72,27 +71,16 @@ def huisman_kemp(
         - sqrt((alpha_1 + alpha_2 + beta_1) ** 2 - 4 * alpha_1 * alpha_2)
     )
 
-    varphi_1 = (
-        Q_1 / (2 * pi * k_1 * D_1 * (lambda_1 - lambda_2))
-        * (
-            (lambda_1 - alpha_2) * k0(sqrt(lambda_1) * r)
-            + (alpha_2 - lambda_2) * k0(sqrt(lambda_2) * r)
-        )
-        + Q_2 / (2 * pi * k_2 * D_2)
-        * beta_1
-        / (lambda_1 - lambda_2)
-        * (-k0(sqrt(lambda_1) * r) + k0(sqrt(lambda_2) * r))
+    varphi_1 = Q_1 / (2 * pi * k_1 * D_1 * (lambda_1 - lambda_2)) * (
+        (lambda_1 - alpha_2) * k0(sqrt(lambda_1) * r)
+        + (alpha_2 - lambda_2) * k0(sqrt(lambda_2) * r)
+    ) + Q_2 / (2 * pi * k_2 * D_2) * beta_1 / (lambda_1 - lambda_2) * (
+        -k0(sqrt(lambda_1) * r) + k0(sqrt(lambda_2) * r)
     )
-    varphi_2 = (
-        Q_1 / (2 * pi * k_1 * D_1)
-        * alpha_2
-        / (lambda_1 - lambda_2)
-        * (-k0(sqrt(lambda_1) * r) + k0(sqrt(lambda_2) * r))
-        + Q_2 / (2 * pi * k_2 * D_2)
-        / (lambda_1 - lambda_2)
-        * (
-            (alpha_2 - lambda_2) * k0(sqrt(lambda_1) * r)
-            + (lambda_1 - alpha_2) * k0(sqrt(lambda_2) * r)
-        )
+    varphi_2 = Q_1 / (2 * pi * k_1 * D_1) * alpha_2 / (lambda_1 - lambda_2) * (
+        -k0(sqrt(lambda_1) * r) + k0(sqrt(lambda_2) * r)
+    ) + Q_2 / (2 * pi * k_2 * D_2) / (lambda_1 - lambda_2) * (
+        (alpha_2 - lambda_2) * k0(sqrt(lambda_1) * r)
+        + (lambda_1 - alpha_2) * k0(sqrt(lambda_2) * r)
     )
     return varphi_1, varphi_2

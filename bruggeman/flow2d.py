@@ -1,6 +1,6 @@
 import numpy as np
 from mpmath import ellipf, ellipk
-from scipy.special import i0, i1, k0, k1, exp1
+from scipy.special import exp1, i0, i1, k0, k1
 
 from bruggeman.general import W, latexify_function
 
@@ -258,8 +258,8 @@ def bruggeman_241_25(
     D: float,
     c: float,
 ) -> float | np.ndarray:
-    """Steady-state solution for a pumping well at the centre of a 
-    circular island with open vertical boundary at r = R. Constant 
+    """Steady-state solution for a pumping well at the centre of a
+    circular island with open vertical boundary at r = R. Constant
     discharge.
 
     From Bruggeman 241.25
@@ -285,8 +285,10 @@ def bruggeman_241_25(
         steady-state drawdown at radius r [L]
     """
     lambda_ = np.sqrt(k * D * c)
-    return Q0 / (2 * np.pi * k * D) * (
-        k0(r / lambda_) - k0(R / lambda_) / i0(R / lambda_) * i0(r / lambda_)
+    return (
+        Q0
+        / (2 * np.pi * k * D)
+        * (k0(r / lambda_) - k0(R / lambda_) / i0(R / lambda_) * i0(r / lambda_))
     )
 
 
@@ -309,8 +311,8 @@ def bruggeman_241_27(
     D: float,
     c: float,
 ) -> float | np.ndarray:
-    """Steady-state solution for a pumping well at the centre of a 
-    circular island with closed vertical boundary at r = R. Constant 
+    """Steady-state solution for a pumping well at the centre of a
+    circular island with closed vertical boundary at r = R. Constant
     discharge.
 
     From Bruggeman 241.27
@@ -336,8 +338,10 @@ def bruggeman_241_27(
         steady-state drawdown at radius r [L]
     """
     lambda_ = np.sqrt(k * D * c)
-    return Q0 / (2 * np.pi * k * D) * (
-        k0(r / lambda_) + k1(R / lambda_) / i1(R / lambda_) * i0(r / lambda_)
+    return (
+        Q0
+        / (2 * np.pi * k * D)
+        * (k0(r / lambda_) + k1(R / lambda_) / i1(R / lambda_) * i0(r / lambda_))
     )
 
 

@@ -2,7 +2,7 @@ from numpy import arctan, cos, exp, float64, imag, pi, real, sin, sqrt
 from numpy.typing import NDArray
 from scipy.special import erfc
 
-from bruggeman.general import ierfc, latexify_function, P
+from bruggeman.general import P, ierfc, latexify_function
 
 
 @latexify_function(identifiers={"bruggeman_21_11": "h"}, reduce_assignments=True)
@@ -203,15 +203,12 @@ def bruggeman_123_32(
         head in the aquifer at distance x and time t [m]
     """
     lambda_ = sqrt(k * D * c)
-    return h * P(x/(2 * lambda_), sqrt(eta * t))
+    return h * P(x / (2 * lambda_), sqrt(eta * t))
 
 
 @latexify_function(
-        identifiers={
-            "bruggeman_123_33": "varphi", 
-            "lambda_": "lambda"
-        }, 
-    reduce_assignments=False
+    identifiers={"bruggeman_123_33": "varphi", "lambda_": "lambda"},
+    reduce_assignments=False,
 )
 def bruggeman_123_33(
     x: float | NDArray[float64],
