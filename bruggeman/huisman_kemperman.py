@@ -18,7 +18,7 @@ from bruggeman.general import latexify_function
     reduce_assignments=False,
     escape_underscores=False,
 )
-def huisman_kemp(
+def huisman_kemperman(
     r: float | NDArray[float64],
     Q_1: float,
     Q_2: float,

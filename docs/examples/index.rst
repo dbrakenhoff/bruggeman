@@ -23,7 +23,7 @@ Below you can find examples.
     bruggeman_241_2x
     bruggeman_244_02
     bruggeman_355_19
-    huisman_kemp
+    huisman_kemperman
     check_ierfc
 
 
@@ -70,7 +70,7 @@ Flow2D
 
 `355.19 Drainage canal on top of confined aquifer`_
 
-`Huisman Kemp Two-layer leaky artesian aquifer extraction`_
+`Huisman Kemperman Two-layer leaky artesian aquifer extraction`_
 
 .. _215.03 Theis solution for constant discharge to a confined aquifer: bruggeman_215_03.html
 .. _215.13 Hantush solution for constant discharge to a leaky aquifer: bruggeman_215_13.html
@@ -78,7 +78,7 @@ Flow2D
 .. _241.2x Pumping well at the centre of circular islands: bruggeman_241_2x.html
 .. _244.02 Circular basin with radial flow: bruggeman_244_02.html
 .. _355.19 Drainage canal on top of confined aquifer: bruggeman_355_19.html
-.. _Huisman Kemp Two-layer leaky artesian aquifer extraction: huisman_kemp.html
+.. _Huisman Kemperman Two-layer leaky artesian aquifer extraction: huisman_kemperman.html
 
 
 Other
