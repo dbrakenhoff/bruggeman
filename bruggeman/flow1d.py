@@ -2,7 +2,7 @@ from numpy import arctan, cos, exp, float64, imag, pi, real, sin, sqrt
 from numpy.typing import NDArray
 from scipy.special import erfc
 
-from bruggeman.general import ierfc, latexify_function
+from bruggeman.general import P, ierfc, latexify_function
 
 
 @latexify_function(identifiers={"bruggeman_21_11": "h"}, reduce_assignments=True)
@@ -160,13 +160,87 @@ def bruggeman_123_05_q(
     return 2 * Q * sqrt(t) / sqrt(k * D * S) * ierfc(u, 1) / (ierfc(0, 0))
 
 
-def bruggeman_123_32():
-    """The Polder function.
+@latexify_function(
+    identifiers={
+        "bruggeman_123_32": "varphi",
+        "lambda_": "lambda",
+        "P": "P",
+    },
+    reduce_assignments=False,
+)
+def bruggeman_123_32(
+    x: float | NDArray[float64],
+    t: float | NDArray[float64],
+    h: float,
+    k: float,
+    D: float,
+    c: float,
+    eta: float,
+) -> float | NDArray[float64]:
+    """Sudden drawdown of the surface water level, which is kept constant thereafter.
 
     From Bruggeman 123.32
+
+    Parameters
+    ----------
+    x : float or ndarray
+        Distance from the boundary [m]
+    t : float or ndarray
+        Time since the drawdown [d]
+    h : float
+        Drawdown height [m]
+    k : float
+        Hydraulic conductivity [m/d]
+    D : float
+        Aquifer thickness [m]
+    c : float
+        Leakance [d]
+    eta : float
+        non-steady leakage parameter [d]
+    Returns
+    -------
+    head : float
+        head in the aquifer at distance x and time t [m]
     """
-    # implement function (check Pastas)
-    pass
+    lambda_ = sqrt(k * D * c)
+    return h * P(x / (2 * lambda_), sqrt(eta * t))
+
+
+@latexify_function(
+    identifiers={"bruggeman_123_33": "varphi", "lambda_": "lambda"},
+    reduce_assignments=False,
+)
+def bruggeman_123_33(
+    x: float | NDArray[float64],
+    h: float,
+    k: float,
+    D: float,
+    c: float,
+) -> float | NDArray[float64]:
+    """Steady state of Bruggeman 123.32.
+
+    From Bruggeman 123.33
+
+    Parameters
+    ----------
+    x : float or ndarray
+        Distance from the boundary [m]
+    h : float
+        Drawdown height [m]
+    k : float
+        Hydraulic conductivity [m/d]
+    D : float
+        Aquifer thickness [m]
+    c : float
+        Leakance [d]
+
+    Returns
+    -------
+    head : float
+        steady state head in the aquifer at distance x [m]
+    """
+    lambda_ = sqrt(k * D * c)
+    return h * exp(-x / lambda_)
 
 
 @latexify_function(
