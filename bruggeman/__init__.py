@@ -70,8 +70,8 @@ def _get_submodule_path(module_name: str) -> str:
     return module_name
 
 
-def get_table_of_contents() -> pd.DataFrame:
-    """Generate a table of contents DataFrame for all Bruggeman functions.
+def list_solutions() -> pd.DataFrame:
+    """View a DataFrame with all Bruggeman functions in bruggeman module.
 
     This function scans all exported functions from the bruggeman package and
     creates a DataFrame containing the Bruggeman solution number, submodule path,
@@ -90,7 +90,7 @@ def get_table_of_contents() -> pd.DataFrame:
     Examples
     --------
     >>> import bruggeman
-    >>> toc = bruggeman.get_table_of_contents()
+    >>> toc = bruggeman.list_solutions()
     >>> print(toc)
     """
     import re
