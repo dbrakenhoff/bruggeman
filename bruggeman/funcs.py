@@ -35,8 +35,7 @@ def W(
 ) -> float | NDArray[float64]:
     r"""Hantush well function for leaky-aquifer flow.
 
-    ..math::
-
+    .. math::
         W(\tau, \rho) = \int_0^\tau \frac{1}{x} \exp\left(-x - \frac{\rho^2}{4x}\right) \, dx.
     """
     tau_arr = np.asarray(tau)
