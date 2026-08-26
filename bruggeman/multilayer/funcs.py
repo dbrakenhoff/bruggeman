@@ -221,3 +221,69 @@ def _matrix_bessel_k1(
 ) -> NDArray[np.float64]:
     """Compute matrix modified Bessel function of the second kind, order 1."""
     return _matrix_bessel(r, sqrtA, k1)
+
+
+def get_psi_for_contour(Qx: NDArray[np.float64]) -> NDArray[np.float64]:
+    """Compute cumulative Qx flux at each layer boundary for contouring.
+
+    Constructs an array representing the cumulative flux from the bottom of the
+    system upwards. The result has values at both the top and bottom of each layer,
+    with duplicate values at layer boundaries to facilitate contour plotting.
+
+    The computation starts from zero at the bottom of the lowest layer, then
+    accumulates the flux upwards through all layers using subtraction (this
+    corresponds to the physical convention used in the multilayer solution).
+
+    Parameters
+    ----------
+    Qx : NDArray[np.float64]
+        Array of shape (nlay, npts) containing the flux values for each layer.
+        Layers are ordered from top (index 0) to bottom (index nlay-1).
+
+    Returns
+    -------
+    NDArray[np.float64]
+        Array of shape (2 * nlay + 1, npts) with cumulative flux values.
+        The array is indexed such that position 0 corresponds to the top of
+        the system. The pattern is:
+        - Index 0: top of uppermost layer
+        - Index 1: bottom of uppermost layer (= top of next layer down)
+        - Index 2: top of second layer
+        - Index 3: bottom of second layer (= top of third layer)
+        - ...
+        - Last index: bottom of lowest layer (always 0)
+
+    Examples
+    --------
+    >>> Qx = np.array([[1.0], [2.0], [3.0]])  # 3 layers, 1 point
+    >>> psi = get_psi_for_contour(Qx)
+    >>> psi.shape
+    (7, 1)
+    """
+    nlay, npts = Qx.shape
+    Qarr = Qx[::-1]  # Reverse to work from bottom up
+    psi_full = np.empty((2 * nlay + 1, npts))
+    psi_full[0] = 0  # Bottom of lowest layer
+
+    for i in range(nlay):
+        psi_full[2 * i + 1] = psi_full[2 * i] - Qarr[i]
+        psi_full[2 * i + 2] = psi_full[2 * i + 1]
+
+    psi_full = psi_full[::-1]  # Reverse so index 0 is at top
+    return psi_full
+
+
+def get_phi_for_contour(phi):
+    """Compute phi values for contouring at layer boundaries.
+
+    Parameters
+    ----------
+    phi : np.ndarray
+        Array of shape (nlay, npts) containing the phi values for each layer.
+
+    Returns
+    -------
+    np.ndarray
+        Array of shape (2 * nlay, npts) with phi values at layer boundaries.
+    """
+    return np.repeat(phi, 2, 0)
