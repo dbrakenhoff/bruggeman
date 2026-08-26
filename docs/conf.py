@@ -18,6 +18,7 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx_design",
     "sphinxcontrib.bibtex",
+    "autoapi.extension",
 ]
 
 templates_path = ["_templates"]
@@ -42,3 +43,19 @@ myst_dmath_double_inline = True
 
 bibtex_bibfiles = ["references.bib"]
 bibtex_reference_style = "author_year"
+
+# -- AutoAPI settings ---------------------------------------------------------
+autoapi_dirs = ["../bruggeman"]
+autoapi_root = "api"
+autoapi_options = [
+    "show-module-summary"
+]
+autoapi_own_page_level = "module"
+suppress_warnings = ["autoapi"]
+
+# Keep API signatures and section navigation compact by omitting module prefixes
+# (e.g., show `River` instead of `timflow.steady.linesink.River`).
+add_module_names = False
+
+# Keep local object TOC entries compact in the right sidebar.
+toc_object_entries_show_parents = "hide"

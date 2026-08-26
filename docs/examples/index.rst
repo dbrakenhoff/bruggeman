@@ -18,13 +18,11 @@ the `docs/examples` folder on Github.
     :hidden:
     :caption: B. Confined - Flow1D
 
-    bruggeman_21_11
     bruggeman_123_02
     bruggeman_123_05
     bruggeman_123_3x
     bruggeman_126_33
     bruggeman_128_0x
-    bruggeman_133_16
     bruggeman_133_1x
     edelman
 
@@ -46,6 +44,8 @@ the `docs/examples` folder on Github.
     :hidden:
     :caption: C. Multi-layer
 
+    bruggeman_710_1x
+
 .. toctree::
     :maxdepth: 4
     :hidden:
@@ -54,21 +54,23 @@ the `docs/examples` folder on Github.
     check_ierfc
 
 
-Flow1D
-------
+A. Phreatic
+-----------
 
 - :doc:`bruggeman_21_11`
+
+B. Confined - Flow1D
+--------------------
 - :doc:`bruggeman_123_02`
 - :doc:`bruggeman_123_05`
 - :doc:`bruggeman_123_3x`
 - :doc:`bruggeman_126_33`
 - :doc:`bruggeman_128_0x`
-- :doc:`bruggeman_133_16`
 - :doc:`bruggeman_133_1x`
 - :doc:`edelman`
 
-Flow2D
-------
+B. Confined - Flow2D
+--------------------
 
 - :doc:`bruggeman_215_03`
 - :doc:`bruggeman_215_1x`
@@ -76,6 +78,11 @@ Flow2D
 - :doc:`bruggeman_244_02`
 - :doc:`bruggeman_355_19`
 - :doc:`huisman_kemperman`
+
+C. Multi-layer
+--------------
+
+- :doc:`bruggeman_710_1x`
 
 Other
 -----

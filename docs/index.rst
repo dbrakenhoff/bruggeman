@@ -21,3 +21,4 @@ provide an alternative solution method that is more easily extended.
 
    Examples <examples/index>
    Bibliography <references>
+   Code Reference <api/index>
