@@ -1,6 +1,6 @@
 """BII: Two-dimensional radial-symmetric flow (solutions 200).
 
-This module contains Bruggeman's analytical solutions for radial-symmetric 
+This module contains Bruggeman's analytical solutions for radial-symmetric
 two-dimensional flow in confined systems.
 
 From Bruggeman (1999), Section BII, solutions 200.
