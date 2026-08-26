@@ -5,11 +5,18 @@ The currently available examples are listed below. The examples are grouped by t
 of flow problem they represent. The examples are also available as Jupyter notebooks in
 the `docs/examples` folder on Github.
 
+.. toctree::
+    :maxdepth: 4
+    :hidden:
+    :caption: A. Phreatic
+
+    bruggeman_21_11
+
 
 .. toctree::
     :maxdepth: 4
     :hidden:
-    :caption: Flow1D
+    :caption: B. Confined - Flow1D
 
     bruggeman_21_11
     bruggeman_123_02
@@ -21,10 +28,11 @@ the `docs/examples` folder on Github.
     bruggeman_133_1x
     edelman
 
+
 .. toctree::
     :maxdepth: 4
     :hidden:
-    :caption: Flow2D
+    :caption: B. Confined - Flow2D
 
     bruggeman_215_03
     bruggeman_215_1x
@@ -32,6 +40,11 @@ the `docs/examples` folder on Github.
     bruggeman_244_02
     bruggeman_355_19
     huisman_kemperman
+
+.. toctree::
+    :maxdepth: 4
+    :hidden:
+    :caption: C. Multi-layer
 
 .. toctree::
     :maxdepth: 4
