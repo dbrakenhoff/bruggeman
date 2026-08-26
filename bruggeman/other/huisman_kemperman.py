@@ -9,7 +9,7 @@ from bruggeman.latexify import latexify_function
 
 @latexify_function(
     identifiers={
-        "huisman_kemp": "varphi_1,2",
+        "huisman_kemperman": "\\varphi_1,2",
         "alpha_1": "\\alpha_1",
         "alpha_2": "\\alpha_2",
         "beta_1": "\\beta_1",
