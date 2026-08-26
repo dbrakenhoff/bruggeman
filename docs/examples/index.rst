@@ -18,13 +18,11 @@ the `docs/examples` folder on Github.
     :hidden:
     :caption: B. Confined - Flow1D
 
-    bruggeman_21_11
     bruggeman_123_02
     bruggeman_123_05
     bruggeman_123_3x
     bruggeman_126_33
     bruggeman_128_0x
-    bruggeman_133_16
     bruggeman_133_1x
     edelman
 
@@ -62,7 +60,7 @@ A. Phreatic
 - :doc:`bruggeman_21_11`
 
 B. Confined - Flow1D
------------------
+--------------------
 - :doc:`bruggeman_123_02`
 - :doc:`bruggeman_123_05`
 - :doc:`bruggeman_123_3x`
