@@ -27,6 +27,7 @@ the `docs/examples` folder on Github.
     bruggeman_133_16
     bruggeman_133_1x
     edelman
+    mazure
 
 
 .. toctree::
@@ -66,6 +67,7 @@ Flow1D
 - :doc:`bruggeman_133_16`
 - :doc:`bruggeman_133_1x`
 - :doc:`edelman`
+- :doc:`mazure`
 
 Flow2D
 ------
