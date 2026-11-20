@@ -7,7 +7,14 @@ layer is that head divided by the resistance c (Mazure).
 
 From Mazure, J.P. (1936). Kwel en chloorbezwaar in de Wieringermeer. Bijlage 10 in:
 Geo-hydrologische gesteldheid van de Wieringermeer. Rapporten en Mededeelingen betreffende
-de Zuiderzeewerken, No. 5.
+de Zuiderzeewerken, No. 5: 67-131. Algemeene Landsdrukkerij, 's-Gravenhage.
+
+The equations are on p. 87-88 (eq. 1-3) and in the appendix (Aanhangsel, par. 1, p. 118),
+with lambda = sqrt(kH c) and beta = sqrt(kH / c): for open water at x = 0 the head is
+``p - h = (p_0 - h) exp(-x / lambda)`` and the flow at x = 0, which is the total seepage,
+``s_0 = beta (p_0 - h)``. Mazure writes p for the head in the aquifer, h for the polder level
+and H for the thickness of the aquifer. For seepage under a dike with a leaky layer on both
+sides (par. 2, p. 119) the result differs: ``s_0 = beta h / (2 + B / lambda)``.
 """
 
 import numpy as np
