@@ -101,7 +101,14 @@ def list_solutions() -> pd.DataFrame:
         for x in globals()
         if (
             x.startswith("bruggeman_")
-            or x in ["h_edelman", "Qx_edelman", "huisman_kemperman"]
+            or x
+            in [
+                "h_edelman",
+                "Qx_edelman",
+                "huisman_kemperman",
+                "q_mazure",
+                "Q_mazure",
+            ]
         )
         and callable(globals()[x])
     ]
